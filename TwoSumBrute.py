@@ -6,10 +6,11 @@ class ArrayVisualization(Scene):
         target = 4
         boxes = []
         
+# Create the code lines
         code_lines = [
-            "for i in range(len(nums) - 1):",
-            "    for j in range(i + 1, len(nums)): ",
-            "        if nums[i] + nums[j] == target:",
+            "for i in range(len(nums) - 1):  ",
+            "    for j in range(i + 1, len(nums)):",
+            "        if nums[i] + nums[j] == target:", 
             "            return [i, j]",
             "    return []"
         ]
@@ -17,31 +18,18 @@ class ArrayVisualization(Scene):
         # Create a group for all the code lines
         code_text = VGroup()
         for line in code_lines:
-            code_line = Text(line, font_size=22, line_spacing=0.5)  # Add line spacing for better readability
+            code_line = Text(line, font_size=22, line_spacing=0.5)  # Adjust font size and spacing
             code_text.add(code_line)
 
         # Arrange the code text vertically
         code_text.arrange(DOWN, buff=0.1)
 
-        # Create a rectangle for the background
-        code_box = Rectangle(
-            width=6,  # Adjust the width as necessary
-            height=2 * len(code_lines),  # Height based on number of lines
-            fill_color=BLACK,
-            fill_opacity=0.8,
-            stroke_color=WHITE,
-            stroke_width=2
-        )
-        code_box.move_to(LEFT * 4)  # Position it on the left side of the screen
+        # Position the code text
+        code_text.move_to(LEFT * 4 + UP * 2)  # Adjust to the left side
 
-        # Move the text block into position inside the rectangle
-        code_text.move_to(code_box.get_center())
-
-        # Add the rectangle and the code text to the scene
-        self.add(code_box, code_text)
-
-        self.wait(2)  # Pause for a moment to see the code block
-
+        # Add the code text to the scene
+        self.add(code_text)
+ 
         # Create array elements with boxes
         for i, elem in enumerate(elements):
             text = Text(str(elem))
