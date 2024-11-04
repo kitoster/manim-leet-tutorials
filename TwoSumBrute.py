@@ -5,30 +5,7 @@ class ArrayVisualization(Scene):
         elements = [2, 1, 5, 3]
         target = 4
         boxes = []
-        
-# Create the code lines
-        code_lines = [
-            "for i in range(len(nums) - 1):  ",
-            "    for j in range(i + 1, len(nums)):",
-            "        if nums[i] + nums[j] == target:", 
-            "            return [i, j]",
-            "    return []"
-        ]
-
-        # Create a group for all the code lines
-        code_text = VGroup()
-        for line in code_lines:
-            code_line = Text(line, font_size=22, line_spacing=0.5)  # Adjust font size and spacing
-            code_text.add(code_line)
-
-        # Arrange the code text vertically
-        code_text.arrange(DOWN, buff=0.1)
-
-        # Position the code text
-        code_text.move_to(LEFT * 4 + UP * 2)  # Adjust to the left side
-
-        # Add the code text to the scene
-        self.add(code_text)
+    
  
         # Create array elements with boxes
         for i, elem in enumerate(elements):
@@ -47,8 +24,8 @@ class ArrayVisualization(Scene):
         self.add(array_group)
 
         # Create and center the target label
-        target_text = Text(f"target = {target}")
-        target_text.move_to(ORIGIN + UP * 2 + RIGHT * 3)
+        target_text = Text(f"target = {target}", font_size = 30)
+        target_text.move_to(ORIGIN + UP * 1 + RIGHT * 3)
         self.add(target_text)
 
         # Initialize pointers
@@ -62,7 +39,7 @@ class ArrayVisualization(Scene):
         self.add(pointer_j)
 
         # Create a text box for the sum
-        sum_text = Text("", font_size=28)
+        sum_text = Text("", font_size=30)
         sum_text.next_to(array_group, DOWN * 6)  # Position it further below the array
         sum_text.shift(RIGHT * 3)
         self.add(sum_text)
@@ -93,7 +70,7 @@ class ArrayVisualization(Scene):
                         array_group[i].animate.set_stroke(YELLOW, 4),
                         array_group[j].animate.set_stroke(YELLOW, 4)
                     )
-                    self.wait(1)
+                    self.wait(5)
                     break  # Exit loop if match found
 
         self.wait(2)  # Wait to display everything at the end
