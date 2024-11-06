@@ -24,7 +24,7 @@ class ArrayVisualization(Scene):
         self.add(array_group)
 
         # Create and center the target label
-        target_text = Text(f"target = {target}", font_size = 30)
+        target_text = Text(f"Target = {target}", font_size = 30)
         target_text.move_to(ORIGIN + UP * 1 + RIGHT * 3)
         self.add(target_text)
 

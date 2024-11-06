@@ -18,8 +18,8 @@ class HashVisualization(Scene):
         ).move_to(hash_box.get_center())
 
         # Move labels "Key" and "Value" to the top of the hash map box
-        key_label = Text("Value  ", font_size=24).next_to(hash_box, UP).align_to(hash_box, LEFT).shift(RIGHT * 0.4)
-        value_label = Text("  Index", font_size=24).next_to(hash_box, UP).align_to(hash_box, RIGHT).shift(LEFT * 0.6)
+        key_label = Text("  Value  ", font_size=24).next_to(hash_box, UP).shift(RIGHT * 0.7)
+        value_label = Text("  Index", font_size=24).next_to(hash_box, UP).shift(LEFT * 0.6)
 
         # Group everything for the hash map
         hash_map_group = VGroup(hash_box, divider, key_label, value_label)
@@ -43,7 +43,7 @@ class HashVisualization(Scene):
         self.add(array_group)
 
         # Create and center the target label above the array
-        target_text = Text(f"target = {target}", font_size=30)
+        target_text = Text(f"Target = {target}", font_size=30) 
         target_text.next_to(array_group, UP * 1.75)
         self.add(target_text)
 
@@ -59,7 +59,7 @@ class HashVisualization(Scene):
         for i, n in enumerate(elements):
             # Highlight the current element
             self.wait(2)
-            self.play(boxes[i].animate.set_fill(YELLOW, opacity=0.2))
+            self.play(boxes[i][0].animate.set_stroke(BLUE, width=4))
 
             # Calculate the difference needed to meet the target
             diff = target - n
@@ -72,13 +72,13 @@ class HashVisualization(Scene):
                 # If found, highlight both matching elements
                 matching_index = prev_map[diff]
                 self.play(
-                    boxes[matching_index].animate.set_fill(GREEN, opacity=0.2),
-                    boxes[i].animate.set_fill(GREEN, opacity=0.2)
+                    boxes[matching_index][0].animate.set_stroke(YELLOW, width=4),
+                    boxes[i][0].animate.set_stroke(YELLOW, width=4)
                 )
                 
                 # Display result as found pair
                 result_text = Text(f"Found: [{matching_index}, {i}]", font_size=24, color=GREEN)
-                result_text.next_to(target_text, DOWN * 2 + LEFT * 3)
+                result_text.move_to(ORIGIN + LEFT * 3 + DOWN * 5)
                 self.add(result_text)
                 self.wait(2)
                 break  # Stop the loop after finding the result
