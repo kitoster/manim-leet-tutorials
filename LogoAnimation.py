@@ -4,9 +4,9 @@ from manim import *
 class LogoAnimation(Scene):
     def construct(self):
 
-        circle = Circle(radius=1.5, color=BLUE, stroke_width=6)
+        circle = Circle(radius=3, color=BLUE, stroke_width=8)
         
-        number_1 = Text("1", font_size=80, color=WHITE).move_to(circle.get_center())
+        number_1 = Text("1", font_size=300, color=GRAY).move_to(circle.get_center())
         
         self.play(Create(circle), FadeIn(number_1, scale=0.5))
         
