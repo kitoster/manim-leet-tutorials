@@ -18,8 +18,8 @@ class HashVisualization(Scene):
         ).move_to(hash_box.get_center())
 
         # Move labels "Key" and "Value" to the top of the hash map box
-        key_label = Text("  Value  ", font_size=24).next_to(hash_box, UP).shift(RIGHT * 0.7)
-        value_label = Text("  Index", font_size=24).next_to(hash_box, UP).shift(LEFT * 0.6)
+        key_label = Text("  Index  ", font_size=24).next_to(hash_box, UP).shift(RIGHT * 0.7)
+        value_label = Text("  Value", font_size=24).next_to(hash_box, UP).shift(LEFT * 0.6)
 
         # Group everything for the hash map
         hash_map_group = VGroup(hash_box, divider, key_label, value_label)

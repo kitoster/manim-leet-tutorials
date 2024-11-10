@@ -4,7 +4,7 @@ from manim import *
 class LogoAnimation(Scene):
     def construct(self):
 
-        circle = Circle(radius=3, color=BLUE, stroke_width=8)
+        circle = Circle(radius=3, color=BLUE, stroke_width=8 )
         
         number_1 = Text("1", font_size=300, color=GRAY).move_to(circle.get_center())
         
