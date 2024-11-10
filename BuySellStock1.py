@@ -1,11 +1,11 @@
 from manim import *
 
-class BuySellStock (Scene):
+class BuySellStock1(Scene):
     def construct(self):
         
         # Display the prices array as text at the top of the screen
-        prices_text = Text("prices = [7, 1, 5, 3, 6, 4]", font_size=24)
-        prices_text.shift(ORIGIN + LEFT * 0.5)
+        prices_text = Text("prices = [7, 1, 5, 3, 6, 4]", font_size=36)
+        prices_text.move_to(UP * 3)
         self.add(prices_text)     # Add the text to the scene
          
         # Create axes with proper configuration
@@ -24,13 +24,10 @@ class BuySellStock (Scene):
         # Example stock prices to plot
         prices = [7, 1, 5, 3, 6, 4]
         indices = list(range(len(prices)))
-        
-        arrayText = Text("prices = [7, 1, 5, 3, 6, 4]", font_size=30)
-        self.add(arrayText)
 
         # Labels for the axes without using LaTeX
-        x_label = Text("Index", font_size=24).next_to(axes.x_axis, DOWN)
-        y_label = Text("Price", font_size=24).next_to(axes.y_axis, LEFT)
+        x_label = Text("Index", font_size=24).next_to(axes.x_axis, DOWN * 2)
+        y_label = Text("Price", font_size=24).next_to(axes.y_axis, LEFT * 2)
         self.add(x_label, y_label)
 
         # Manually add tick labels along the x-axis and y-axis
