@@ -7,6 +7,10 @@ class BuySellStock1(Scene):
         prices_text = Text("prices = [7, 1, 5, 3, 6, 4]", font_size=36)
         prices_text.move_to(UP * 3)
         self.add(prices_text)     # Add the text to the scene
+        
+        maxP_text = Text("maxProfit = 0 ", font_size = 28)
+        maxP_text.move_to(UP * 2.5)
+        self.add(maxP_text)
          
         # Create axes with proper configuration
         axes = Axes(
@@ -58,9 +62,20 @@ class BuySellStock1(Scene):
         sell_dot = Dot(axes.coords_to_point(max_index, prices[max_index]), color=RED)
         buy_label = Text("Buy", color=GREEN).next_to(buy_dot, DOWN)
         sell_label = Text("Sell", color=RED).next_to(sell_dot, UP)
+        
+        
+        # Circle highlights for first and second indices
+        circle_1 = Circle(radius=0.2, color=GREEN).move_to(points[1])
+        circle_2 = Circle(radius=0.2, color=GREEN).move_to(points[2])
+        
+        # Animate circling the first index, then the second
+        self.play(Create(circle_1))
+        self.wait(1)
+        self.play(Create(circle_2))
+        self.wait(1) 
 
         # Animate the buy/sell points
-        self.play(FadeIn(buy_dot, buy_label), FadeIn(sell_dot, sell_label))
+        # self.play(FadeIn(buy_dot, buy_label), FadeIn(sell_dot, sell_label))
 
         # Hold final view
         self.wait(2)
