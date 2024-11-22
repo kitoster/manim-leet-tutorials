@@ -21,14 +21,20 @@ def threeSum(self, nums: List[int]) -> List[List[int]]:
 	N, P = set(n), set(p)
  
  
- 
-
-	#3. If there is at least 1 zero in the list, add all cases where -num exists in N and num exists in P
+ #3. If there is at least 1 zero in the list, add all cases where -num exists in N and num exists in P
 	#   i.e. (-3, 0, 3) = 0
+ 
+ 
+    # If there's a zero, check for -num and num
 	if z:
 		for num in P:
-			if -1*num in N:
+			if -1*num in N: 
 				res.add((-1*num, 0, num))
+    
+    
+    
+    
+    
 
 	#3. If there are at least 3 zeros in the list then also include (0, 0, 0) = 0
 	if len(z) >= 3:
